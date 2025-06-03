@@ -4,54 +4,31 @@ on:
   push:
     branches:
       - main
-
-env:
-  TRANSLATION_LANGS: "es,pt,fr"
-
 jobs:
-  prepare-readme:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Update main README with translation links
-        run: |
-          echo -e "## README Translations\n" > README.translations.md
-          echo "- [English](README.md)" >> README.translations.md
-          
-          IFS=',' read -ra LANGS <<< "$TRANSLATION_LANGS"
-          for lang in "${LANGS[@]}"; do
-            echo "- [$(echo $lang | tr 'a-z' 'A-Z')](README.$lang.md)" >> README.translations.md
-          done
-          
-          cat README.md README.translations.md > README.combined.md
-          mv README.combined.md README.md
-          rm README.translations.md
-          
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add README.md
-          git commit -m "doc: Add translation links to README" || echo "No changes to commit"
-          git push
-
-  translate:
-    needs: prepare-readme
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        languages: ${{ fromJSON(format('["{0}"]', join(fromJSON('["' + env.TRANSLATION_LANGS + '"]'), '","'))) }}
-    steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: true
-
+          token: ${{ secrets.GITHUB_TOKEN }} 
+          persist-credentials: true 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
-          node-version: 16.x
-      
-      - name: Translate to ${{ matrix.languages }}
+          node-version: 12.x
+      # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
+      - name: Adding README - Spanish
         uses: dephraiim/translate-readme@main
         with:
-          LANG: ${{ matrix.languages }}
+          LANG: es
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Adding README - Portuguese
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: pt
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Adding README - French
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: fr
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
