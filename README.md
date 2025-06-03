@@ -1,5 +1,11 @@
 # Module `view_hook`
-## Odoo: `18`
+## `Odoo`: `18`
+
+## README Translation
+- [English](README.md)
+- [Spanish](README.es.md)
+- [Portuguese](README.pt.md)
+- [French](README.fr.md)
 
 ## Purpose
 
