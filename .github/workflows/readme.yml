@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} 
+          persist-credentials: true 
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
