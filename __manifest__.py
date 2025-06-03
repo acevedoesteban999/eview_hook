@@ -3,8 +3,8 @@
     'summary': '',
     'description': """
     """,
-    'author': """esteban.acevedo@qa-bit.com,
-            QA-BIT""",
+    'author': """Esteban ACB2,
+            acevedoesteban999@gmail.com""",
     'version': '0.1.0',
     'depends': ['base'],
     
