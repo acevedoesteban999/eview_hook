@@ -6,7 +6,8 @@ on:
       - main
 
 env:
-  TRANSLATION_LANGS: "es,pt,fr"
+  # Definimos los idiomas como array en formato JSON
+  TRANSLATION_LANGS: '["es", "pt", "fr"]'
 
 jobs:
   prepare-readme:
@@ -15,12 +16,17 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Update main README with translation links
+        env:
+          # Pasamos la variable a formato shell
+          LANGS_STRING: ${{ fromJSON(env.TRANSLATION_LANGS) }}
         run: |
           echo -e "## README Translations\n" > README.translations.md
           echo "- [English](README.md)" >> README.translations.md
           
-          IFS=',' read -ra LANGS <<< "$TRANSLATION_LANGS"
-          for lang in "${LANGS[@]}"; do
+          # Convertimos el JSON a array en bash
+          LANGS_ARRAY=($(echo '$LANGS_STRING' | jq -r '.[]'))
+          
+          for lang in "${LANGS_ARRAY[@]}"; do
             echo "- [$(echo $lang | tr 'a-z' 'A-Z')](README.$lang.md)" >> README.translations.md
           done
           
@@ -31,7 +37,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add README.md
-          git commit -m "doc: Add translation links to README" || echo "No changes to commit"
+          git commit -m "Add translation links to README" || echo "No changes to commit"
           git push
 
   translate:
@@ -39,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        languages: ${{ fromJSON(format('["{0}"]', join(fromJSON('["' + env.TRANSLATION_LANGS + '"]'), '","'))) }}
+        languages: ${{ fromJSON(env.TRANSLATION_LANGS) }}
     steps:
       - uses: actions/checkout@v3
         with:
