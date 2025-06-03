@@ -5,28 +5,21 @@ on:
     branches:
       - main
 
-env:
-  # Definimos los idiomas como array en formato JSON
-  TRANSLATION_LANGS: '["es", "pt", "fr"]'
-
 jobs:
   prepare-readme:
     runs-on: ubuntu-latest
+    env:
+      TRANSLATION_LANGS: "es,pt,fr" 
     steps:
       - uses: actions/checkout@v3
       
       - name: Update main README with translation links
-        env:
-          # Pasamos la variable a formato shell
-          LANGS_STRING: ${{ fromJSON(env.TRANSLATION_LANGS) }}
         run: |
           echo -e "## README Translations\n" > README.translations.md
           echo "- [English](README.md)" >> README.translations.md
           
-          # Convertimos el JSON a array en bash
-          LANGS_ARRAY=($(echo '$LANGS_STRING' | jq -r '.[]'))
-          
-          for lang in "${LANGS_ARRAY[@]}"; do
+          IFS=',' read -ra LANGS <<< "$TRANSLATION_LANGS"
+          for lang in "${LANGS[@]}"; do
             echo "- [$(echo $lang | tr 'a-z' 'A-Z')](README.$lang.md)" >> README.translations.md
           done
           
@@ -45,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        languages: ${{ fromJSON(env.TRANSLATION_LANGS) }}
+        languages: ["es", "pt", "fr"]
     steps:
       - uses: actions/checkout@v3
         with:
