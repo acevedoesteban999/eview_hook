@@ -69,3 +69,9 @@ Below is an example of how to configure the module to dynamically generate inher
 - Reduction of manual errors when updating modules.
 - Automatic propagation of translations between templates and inherited views.
 
+## README Translations
+
+- [English](README.md)
+- [ES](README.es.md)
+- [PT](README.pt.md)
+- [FR](README.fr.md)
