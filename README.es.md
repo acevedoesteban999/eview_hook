@@ -1,6 +1,13 @@
 # Módulo`view_hook`
 
-## Mientras:`18`
+## `Odoo`:`18`
+
+## Traducción de lectura
+
+-   [Inglés](README.md)
+-   [Español](README.es.md)
+-   [portugués](README.pt.md)
+-   [Francés](README.fr.md)
 
 ## Objetivo
 
@@ -13,7 +20,7 @@ El módulo usa un modelo llamado`ir.ui.view.hook`que define dos campos principal
 -   `template_name`: El nombre de la plantilla que se utilizará como base para generar la vista hereditaria.
 -   `inherit_key`: La clave de la vista a ser heredada.
 
-La función principal del módulo es`post_update_hook`, which is executed when a module is updated. This function performs the following steps:
+La función principal del módulo es`post_update_hook`, que se ejecuta cuando se actualiza un módulo. Esta función realiza los siguientes pasos:
 
 1.  Búsqueda de registros en el`ir.ui.view.hook`modelo que coincida con el nombre del módulo proporcionado.
 2.  Para cada registro encontrado:
@@ -51,7 +58,7 @@ A continuación se muestra un ejemplo de cómo configurar el módulo para genera
     -   La plantilla contiene las modificaciones que se aplicarán a la vista hereditaria.
 
 3.  **Ejecución de la función**:
-    -   El`post_update_hook` function is executed with the `module_name`Parámetro, que indica el nombre del módulo. Esto activa el proceso de generación dinámica de las vistas hereditarias solo para este módulo.
+    -   El`post_update_hook`la función se ejecuta con el`module_name`Parámetro, que indica el nombre del módulo. Esto activa el proceso de generación dinámica de las vistas hereditarias solo para este módulo.
 
 ## Requisitos
 

@@ -1,10 +1,17 @@
 # Module`view_hook`
 
-## Alors que:`18`
+## `Odoo`:`18`
+
+## Traduction de réadme
+
+-   [Anglais](README.md)
+-   [Espagnol](README.es.md)
+-   [portugais](README.pt.md)
+-   [Français](README.fr.md)
 
 ## But
 
-Le`view_hook`Le module vise à faciliter la création dynamique de vues héritées (`inherit`) Dans Odoo lors de la mise à jour des modules. Ceci est particulièrement utile lorsque vous devez modifier ou étendre automatiquement les vues existantes en utilisant uniquement le modèle`key`, sans définir manuellement les vues héritées pour chaque mise à jour.
+Le`view_hook`Le module vise à faciliter la création dynamique de vues héritées (`inherit`) Dans Odoo lors de la mise à jour des modules. Ceci est particulièrement utile lorsque vous devez modifier ou étendre automatiquement les vues existantes en utilisant uniquement le modèle`key`, without manually defining inherited views for each update.
 
 ## Fonctionnalité
 
@@ -24,7 +31,7 @@ La fonction principale du module est`post_update_hook`, qui est exécuté lorsqu
 
 ## Exemple d'utilisation
 
-Below is an example of how to configure the module to dynamically generate inherited views:
+Vous trouverez ci-dessous un exemple de la façon de configurer le module pour générer dynamiquement les vues héritées:
 
 ```xml
 <record id="module_name__template_name__view_hook" model="ir.ui.view.hook">
@@ -43,11 +50,11 @@ Below is an example of how to configure the module to dynamically generate inher
 
 ### Exemple d'explication
 
-1.  **Définition du crochet (`ir.ui.view.hook`)**:
+1.  **Hook Definition (`ir.ui.view.hook`)**:
     -   Spécifie le`template_name`, qui est le modèle de base.
     -   Définit le`inherit_key`, qui est la clé de la vue originale à hériter.
 
-2.  **Modèle de base**:
+2.  **Base Template**:
     -   Le modèle contient les modifications à appliquer à la vue héritée.
 
 3.  **Exécution de la fonction**:
@@ -60,6 +67,6 @@ Below is an example of how to configure the module to dynamically generate inher
 
 ## Avantages
 
--   Automatisation dans la création de vues héritées.
+-   Automation in the creation of inherited views.
 -   Réduction des erreurs manuelles lors de la mise à jour des modules.
 -   Propagation automatique des traductions entre les modèles et les vues héritées.
