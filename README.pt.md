@@ -7,7 +7,7 @@
 -   [Inglês](README.md)
 -   [Espanhol](README.es.md)
 -   [Português](README.pt.md)
--   [French](README.fr.md)
+-   [Francês](README.fr.md)
 
 ## Propósito
 
@@ -22,7 +22,7 @@ O módulo usa um modelo chamado`ir.ui.view.hook`que define dois campos principai
 
 A principal função do módulo é`post_update_hook`, que é executado quando um módulo é atualizado. Esta função executa as seguintes etapas:
 
-1.  Procura registros no`ir.ui.view.hook`modelo que corresponde ao nome do módulo fornecido.
+1.  Searches for records in the `ir.ui.view.hook`modelo que corresponde ao nome do módulo fornecido.
 2.  Para cada registro encontrado:
     -   Recupera a visão original (`inherit_key`) e o modelo base (`template_name`).
     -   Extrai o conteúdo do modelo base e o usa para criar uma nova visualização herdada.
@@ -58,7 +58,7 @@ Abaixo está um exemplo de como configurar o módulo para gerar dinamicamente vi
     -   O modelo contém as modificações a serem aplicadas à visão herdada.
 
 3.  **Execução da função**:
-    -   O`post_update_hook`A função é executada com o`module_name`parâmetro, que indica o nome do módulo. Isso ativa o processo de geração dinâmica de visualizações herdadas apenas para este módulo.
+    -   O`post_update_hook`A função é executada com o`module_name` parameter, which indicates the module name. This activates the dynamic generation process of inherited views only for this module.
 
 ## Requisitos
 
