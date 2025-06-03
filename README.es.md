@@ -20,7 +20,7 @@ El módulo usa un modelo llamado`ir.ui.view.hook`que define dos campos principal
 -   `template_name`: El nombre de la plantilla que se utilizará como base para generar la vista hereditaria.
 -   `inherit_key`: La clave de la vista a ser heredada.
 
-La función principal del módulo es`post_update_hook`, que se ejecuta cuando se actualiza un módulo. Esta función realiza los siguientes pasos:
+La función principal del módulo es`post_update_hook`, which is executed when a module is updated. This function performs the following steps:
 
 1.  Búsqueda de registros en el`ir.ui.view.hook`modelo que coincida con el nombre del módulo proporcionado.
 2.  Para cada registro encontrado:
