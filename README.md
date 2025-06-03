@@ -1,65 +1,65 @@
-# Módulo `view_hook`
+# Module `view_hook`
 ## Odoo: `18`
 
-## Propósito
+## Purpose
 
-El módulo `view_hook` tiene como objetivo facilitar la creación dinámica de vistas heredadas (`inherit`) en Odoo al actualizar los módulos. Esto es especialmente útil cuando se necesita modificar o extender vistas existentes de manera automatizada, sin necesidad de definir manualmente las vistas heredadas en cada actualización.
+The `view_hook` module aims to facilitate the dynamic creation of inherited views (`inherit`) in Odoo when updating modules. This is especially useful when you need to modify or extend existing views automatically using only the template `key`, without manually defining inherited views for each update.
 
-## Funcionamiento
+## Functionality
 
-El módulo utiliza un modelo llamado `ir.ui.view.hook` que define dos campos principales:
+The module uses a model called `ir.ui.view.hook` that defines two main fields:
 
-- `template_name`: El nombre del template que se utilizará como base para generar la vista heredada.
-- `inherit_key`: La clave de la vista que será heredada.
+- `template_name`: The name of the template to be used as the base for generating the inherited view.
+- `inherit_key`: The key of the view to be inherited.
 
-La función principal del módulo es `post_update_hook`, que se ejecuta al actualizar un módulo. Esta función realiza los siguientes pasos:
+The main function of the module is `post_update_hook`, which is executed when a module is updated. This function performs the following steps:
 
-1. Busca los registros en el modelo `ir.ui.view.hook` que coincidan con el nombre del módulo proporcionado.
-2. Para cada registro encontrado:
-   - Obtiene la vista original (`inherit_key`) y el template base (`template_name`).
-   - Extrae el contenido del template base y lo utiliza para crear una nueva vista heredada.
-   - Si ya existe una vista heredada con el nombre generado, actualiza su contenido; de lo contrario, crea una nueva vista.
-   - Propaga las traducciones del template base a la nueva vista heredada.
+1. Searches for records in the `ir.ui.view.hook` model that match the provided module name.
+2. For each record found:
+   - Retrieves the original view (`inherit_key`) and the base template (`template_name`).
+   - Extracts the content of the base template and uses it to create a new inherited view.
+   - If an inherited view with the generated name already exists, updates its content; otherwise, creates a new view.
+   - Propagates translations from the base template to the new inherited view.
 
-## Ejemplo de Uso
+## Usage Example
 
-A continuación, se muestra un ejemplo de cómo configurar el módulo para generar vistas heredadas dinámicamente:
+Below is an example of how to configure the module to dynamically generate inherited views:
 
 ```xml
-<record id="galileo_webiste_product_share_buttons_view_hook" model="ir.ui.view.hook">
-    <field name="template_name">galileo_website.galileo_webiste_product_share_buttons_1</field>
-    <field name="inherit_key">theme_clarico_vega.product_share_buttons_ept</field>
+<record id="module_name__template_name__view_hook" model="ir.ui.view.hook">
+    <field name="template_name">module_name.template_name</field>
+    <field name="inherit_key">inherit_module_name.inherit_tamplate_key</field>
 </record>
 
-<template id="galileo_webiste_product_share_buttons_1">
-    <xpath expr="//div[hasclass('s_share')]" position="replace"/>
+<template id="module_name.template_name">
+    <xpath expr="//div[@id='div_id']" position="replace"/>
 </template>
 
 <function model="ir.ui.view.hook" name="post_update_hook">
-    <value>galileo_website</value>
+    <value>module_name</value>
 </function>
 ```
 
-### Explicación del Ejemplo
+### Example Explanation
 
-1. **Definición del Hook (`ir.ui.view.hook`)**:
-   - Se especifica el `template_name` como `galileo_website.galileo_webiste_product_share_buttons_1`, que es el template base.
-   - Se define el `inherit_key` como `theme_clarico_vega.product_share_buttons_ept`, que es la vista original que será heredada.
+1. **Hook Definition (`ir.ui.view.hook`)**:
+   - Specifies the `template_name`, which is the base template.
+   - Defines the `inherit_key`, which is the key of the original view to be inherited.
 
-2. **Template Base**:
-   - El template `galileo_webiste_product_share_buttons_1` contiene las modificaciones que se aplicarán a la vista heredada.
+2. **Base Template**:
+   - The template contains the modifications to be applied to the inherited view.
 
-3. **Ejecución de la Función**:
-   - La función `post_update_hook` se ejecuta con el parámetro `galileo_website`, que indica el nombre del módulo. Esto activa el proceso de generación dinámica de vistas heredadas.
+3. **Function Execution**:
+   - The `post_update_hook` function is executed with the `module_name` parameter, which indicates the module name. This activates the dynamic generation process of inherited views only for this module.
 
-## Requisitos
+## Requirements
 
-- Es necesario que el nombre del módulo (`module_name`) se pase como parámetro al ejecutar la función `post_update_hook`.
-- Los templates base deben estar correctamente definidos y asociados a las vistas originales mediante el modelo `ir.ui.view.hook`.
+- The module name (`module_name`) must be passed as a parameter when executing the `post_update_hook` function.
+- Base templates must be correctly defined and associated with the original views through the `ir.ui.view.hook` model.
 
-## Beneficios
+## Benefits
 
-- Automatización en la creación de vistas heredadas.
-- Reducción de errores manuales al actualizar módulos.
-- Propagación automática de traducciones entre templates y vistas heredadas.
+- Automation in the creation of inherited views.
+- Reduction of manual errors when updating modules.
+- Automatic propagation of translations between templates and inherited views.
 
