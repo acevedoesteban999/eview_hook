@@ -21,15 +21,19 @@ jobs:
         uses: dephraiim/translate-readme@main
         with:
           LANG: en
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Adding README - Spanish
         uses: dephraiim/translate-readme@main
         with:
           LANG: es
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Adding README - Portuguese
         uses: dephraiim/translate-readme@main
         with:
           LANG: pt
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Adding README - French
         uses: dephraiim/translate-readme@main
         with:
           LANG: fr
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
