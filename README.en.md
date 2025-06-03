@@ -1,6 +1,13 @@
 # Module`view_hook`
 
-## While:`18`
+## `Odoo`:`18`
+
+## README Translation
+
+-   [English](README.md)
+-   [Spanish](README.es.md)
+-   [Portuguese](README.pt.md)
+-   [French](README.fr.md)
 
 ## Purpose
 
@@ -8,7 +15,7 @@ The`view_hook`module aims to facilitate the dynamic creation of inherited views 
 
 ## Functionality
 
-The module uses a model called`ir.ui.view.hook`that defines two main fields:
+The module uses a model called`ir.ui.view.hook` that defines two main fields:
 
 -   `template_name`: The name of the template to be used as the base for generating the inherited view.
 -   `inherit_key`: The key of the view to be inherited.
