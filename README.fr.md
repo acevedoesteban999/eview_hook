@@ -1,4 +1,4 @@
-# Module`view_hook`
+# Module`eview_hook`
 
 ## `Odoo`:`18`
 
@@ -11,7 +11,7 @@
 
 ## But
 
-Le`view_hook`Le module vise à faciliter la création dynamique de vues héritées (`inherit`) Dans Odoo lors de la mise à jour des modules. Ceci est particulièrement utile lorsque vous devez modifier ou étendre automatiquement les vues existantes en utilisant uniquement le modèle`key`, sans définir manuellement les vues héritées pour chaque mise à jour.
+Le`eview_hook`Le module vise à faciliter la création dynamique de vues héritées (`inherit`) Dans Odoo lors de la mise à jour des modules. Ceci est particulièrement utile lorsque vous devez modifier ou étendre automatiquement les vues existantes en utilisant uniquement le modèle`key`, sans définir manuellement les vues héritées pour chaque mise à jour.
 
 ## Fonctionnalité
 
@@ -34,7 +34,7 @@ La fonction principale du module est`post_update_hook`, qui est exécuté lorsqu
 Vous trouverez ci-dessous un exemple de la façon de configurer le module pour générer dynamiquement les vues héritées:
 
 ```xml
-<record id="module_name__template_name__view_hook" model="ir.ui.view.hook">
+<record id="module_name__template_name__eview_hook" model="ir.ui.view.hook">
     <field name="template_name">module_name.template_name</field>
     <field name="inherit_key">inherit_module_name.inherit_tamplate_key</field>
 </record>
