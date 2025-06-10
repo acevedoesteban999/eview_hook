@@ -11,7 +11,7 @@
 
 ## But
 
-Le`view_hook`Le module vise à faciliter la création dynamique de vues héritées (`inherit`) Dans Odoo lors de la mise à jour des modules. Ceci est particulièrement utile lorsque vous devez modifier ou étendre automatiquement les vues existantes en utilisant uniquement le modèle`key`, without manually defining inherited views for each update.
+Le`view_hook`Le module vise à faciliter la création dynamique de vues héritées (`inherit`) Dans Odoo lors de la mise à jour des modules. Ceci est particulièrement utile lorsque vous devez modifier ou étendre automatiquement les vues existantes en utilisant uniquement le modèle`key`, sans définir manuellement les vues héritées pour chaque mise à jour.
 
 ## Fonctionnalité
 
@@ -50,11 +50,11 @@ Vous trouverez ci-dessous un exemple de la façon de configurer le module pour g
 
 ### Exemple d'explication
 
-1.  **Hook Definition (`ir.ui.view.hook`)**:
+1.  **Définition du crochet (`ir.ui.view.hook`)**:
     -   Spécifie le`template_name`, qui est le modèle de base.
     -   Définit le`inherit_key`, qui est la clé de la vue originale à hériter.
 
-2.  **Base Template**:
+2.  **Modèle de base**:
     -   Le modèle contient les modifications à appliquer à la vue héritée.
 
 3.  **Exécution de la fonction**:
@@ -67,6 +67,6 @@ Vous trouverez ci-dessous un exemple de la façon de configurer le module pour g
 
 ## Avantages
 
--   Automation in the creation of inherited views.
+-   Automatisation dans la création de vues héritées.
 -   Réduction des erreurs manuelles lors de la mise à jour des modules.
 -   Propagation automatique des traductions entre les modèles et les vues héritées.

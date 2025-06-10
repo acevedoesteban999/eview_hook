@@ -7,7 +7,7 @@
 -   [Inglês](README.md)
 -   [Espanhol](README.es.md)
 -   [Português](README.pt.md)
--   [Francês](README.fr.md)
+-   [French](README.fr.md)
 
 ## Propósito
 
@@ -22,12 +22,12 @@ O módulo usa um modelo chamado`ir.ui.view.hook`que define dois campos principai
 
 A principal função do módulo é`post_update_hook`, que é executado quando um módulo é atualizado. Esta função executa as seguintes etapas:
 
-1.  Searches for records in the `ir.ui.view.hook`modelo que corresponde ao nome do módulo fornecido.
+1.  Procura registros no`ir.ui.view.hook`modelo que corresponde ao nome do módulo fornecido.
 2.  Para cada registro encontrado:
     -   Recupera a visão original (`inherit_key`) e o modelo base (`template_name`).
     -   Extrai o conteúdo do modelo base e o usa para criar uma nova visualização herdada.
     -   Se já existir uma visão herdada com o nome gerado, atualiza seu conteúdo; Caso contrário, cria uma nova visão.
-    -   Propaga as traduções do modelo base para a nova visualização herdada.
+    -   Propagates translations from the base template to the new inherited view.
 
 ## Exemplo de uso
 
@@ -52,13 +52,13 @@ Abaixo está um exemplo de como configurar o módulo para gerar dinamicamente vi
 
 1.  **Definição de gancho (`ir.ui.view.hook`)**:
     -   Especifica o`template_name`, que é o modelo base.
-    -   Define o`inherit_key`, que é a chave da visão original a ser herdada.
+    -   Define o`inherit_key`, which is the key of the original view to be inherited.
 
 2.  **Modelo base**:
     -   O modelo contém as modificações a serem aplicadas à visão herdada.
 
-3.  **Execução da função**:
-    -   O`post_update_hook`A função é executada com o`module_name` parameter, which indicates the module name. This activates the dynamic generation process of inherited views only for this module.
+3.  **Function Execution**:
+    -   O`post_update_hook`A função é executada com o`module_name`parâmetro, que indica o nome do módulo. Isso ativa o processo de geração dinâmica de visualizações herdadas apenas para este módulo.
 
 ## Requisitos
 

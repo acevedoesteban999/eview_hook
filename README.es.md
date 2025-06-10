@@ -26,7 +26,7 @@ La función principal del módulo es`post_update_hook`, que se ejecuta cuando se
 2.  Para cada registro encontrado:
     -   Recupera la vista original (`inherit_key`) y la plantilla base (`template_name`).
     -   Extrae el contenido de la plantilla base y la usa para crear una nueva vista hereditaria.
-    -   Si ya existe una vista hereditaria con el nombre generado, actualiza su contenido; De lo contrario, crea una nueva vista.
+    -   If an inherited view with the generated name already exists, updates its content; otherwise, creates a new view.
     -   Propagar las traducciones de la plantilla base a la nueva vista hereditaria.
 
 ## Ejemplo de uso
