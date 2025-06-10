@@ -1,4 +1,4 @@
-# Módulo`view_hook`
+# Módulo`eview_hook`
 
 ## `Odoo`:`18`
 
@@ -11,7 +11,7 @@
 
 ## Objetivo
 
-El`view_hook`El módulo tiene como objetivo facilitar la creación dinámica de vistas hereditarias (`inherit`) en Odoo al actualizar los módulos. Esto es especialmente útil cuando necesita modificar o extender las vistas existentes automáticamente usando solo la plantilla`key`, sin definir manualmente las vistas hereditarias para cada actualización.
+El`eview_hook`El módulo tiene como objetivo facilitar la creación dinámica de vistas hereditarias (`inherit`) en Odoo al actualizar los módulos. Esto es especialmente útil cuando necesita modificar o extender las vistas existentes automáticamente usando solo la plantilla`key`, sin definir manualmente las vistas hereditarias para cada actualización.
 
 ## Funcionalidad
 
@@ -22,11 +22,11 @@ El módulo usa un modelo llamado`ir.ui.view.hook`que define dos campos principal
 
 La función principal del módulo es`post_update_hook`, que se ejecuta cuando se actualiza un módulo. Esta función realiza los siguientes pasos:
 
-1.  Búsqueda de registros en el`ir.ui.view.hook`modelo que coincida con el nombre del módulo proporcionado.
-2.  Para cada registro encontrado:
+1.  Búsqueda de registros en el`ir.ui.view.hook` model that match the provided module name.
+2.  For each record found:
     -   Recupera la vista original (`inherit_key`) y la plantilla base (`template_name`).
     -   Extrae el contenido de la plantilla base y la usa para crear una nueva vista hereditaria.
-    -   If an inherited view with the generated name already exists, updates its content; otherwise, creates a new view.
+    -   Si ya existe una vista hereditaria con el nombre generado, actualiza su contenido; De lo contrario, crea una nueva vista.
     -   Propagar las traducciones de la plantilla base a la nueva vista hereditaria.
 
 ## Ejemplo de uso
@@ -34,7 +34,7 @@ La función principal del módulo es`post_update_hook`, que se ejecuta cuando se
 A continuación se muestra un ejemplo de cómo configurar el módulo para generar dinámicamente vistas heredadas:
 
 ```xml
-<record id="module_name__template_name__view_hook" model="ir.ui.view.hook">
+<record id="module_name__template_name__eview_hook" model="ir.ui.view.hook">
     <field name="template_name">module_name.template_name</field>
     <field name="inherit_key">inherit_module_name.inherit_tamplate_key</field>
 </record>
@@ -67,6 +67,6 @@ A continuación se muestra un ejemplo de cómo configurar el módulo para genera
 
 ## Beneficios
 
--   Automatización en la creación de vistas hereditarias.
+-   Automation in the creation of inherited views.
 -   Reducción de errores manuales al actualizar módulos.
 -   Propagación automática de traducciones entre plantillas y vistas hereditarias.
