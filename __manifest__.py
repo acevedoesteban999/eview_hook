@@ -1,5 +1,5 @@
 {
-    'name': 'View Hook',
+    'name': 'eview_hook',
     'summary': '',
     'description': """
     """,

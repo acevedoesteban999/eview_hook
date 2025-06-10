@@ -1,4 +1,4 @@
-# Module `view_hook`
+# Module `eview_hook`
 ## `Odoo`: `18`
 
 ## README Translation
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-The `view_hook` module aims to facilitate the dynamic creation of inherited views (`inherit`) in Odoo when updating modules. This is especially useful when you need to modify or extend existing views automatically using only the template `key`, without manually defining inherited views for each update.
+The `eview_hook` module aims to facilitate the dynamic creation of inherited views (`inherit`) in Odoo when updating modules. This is especially useful when you need to modify or extend existing views automatically using only the template `key`, without manually defining inherited views for each update.
 
 ## Functionality
 
@@ -32,7 +32,7 @@ The main function of the module is `post_update_hook`, which is executed when a 
 Below is an example of how to configure the module to dynamically generate inherited views:
 
 ```xml
-<record id="module_name__template_name__view_hook" model="ir.ui.view.hook">
+<record id="module_name__template_name__eview_hook" model="ir.ui.view.hook">
     <field name="template_name">module_name.template_name</field>
     <field name="inherit_key">inherit_module_name.inherit_tamplate_key</field>
 </record>
